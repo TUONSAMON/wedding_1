@@ -1,17 +1,12 @@
 <!DOCTYPE html>
-<html lang="km">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0, viewport-fit=cover"
   />
-  <title>អនុស្សាវរីយ៍មង្គលការ | M & F</title>
-
-  <!-- Khmer + English fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Battambang:wght@300;400;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <title>Save The Date</title>
 
   <style>
     * {
@@ -20,1019 +15,389 @@
       box-sizing: border-box;
     }
 
-    :root {
-      --gold: #AE7700;
-      --gold-soft: rgba(174, 119, 0, 0.35);
-      --light-line: rgba(255, 250, 240, 0.85);
-      --text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
-      --kh-font: "Battambang", "Khmer OS Battambang", "Khmer OS", sans-serif;
-      --en-font: "Playfair Display", Georgia, "Times New Roman", serif;
-    }
-
     html,
     body {
       width: 100%;
-      min-height: 100%;
+      height: 100%;
     }
 
     body {
-      background: #888686;
-      font-family: var(--kh-font);
-      color: var(--gold);
-      font-size: 16px;
-      letter-spacing: 0.2px;
+      background: #000;
+      font-family: Arial, sans-serif;
     }
 
-    .invitation {
+    .card {
       width: 100%;
       min-height: 100vh;
       min-height: 100dvh;
       position: relative;
       overflow: hidden;
-      background:
-        linear-gradient(rgba(255, 245, 240, 0.25), rgba(255, 250, 245, 0.35)),
-        url("angkor.png") center center / cover no-repeat;
+      background: url("angkor.png") center center / cover no-repeat;
       padding-top: env(safe-area-inset-top);
       padding-bottom: env(safe-area-inset-bottom);
     }
 
-    .invitation::before {
+    .card::before {
       content: "";
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(255, 240, 235, 0.35) 0%,
-          rgba(255, 250, 245, 0.5) 30%,
-          rgba(255, 255, 255, 0.55) 60%,
-          rgba(255, 245, 235, 0.5) 90%,
-          rgba(255, 235, 225, 0.4) 100%
-        );
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .invitation::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 18px;
-      width: 5px;
-      background: var(--light-line);
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 170, 110, 0.10) 0%,
+        rgba(0, 0, 0, 0.03) 35%,
+        rgba(0, 0, 0, 0.10) 100%
+      );
       z-index: 1;
-      box-shadow: calc(100vw - 41px) 0 0 var(--light-line);
-      pointer-events: none;
     }
 
     .flower-top-left,
     .flower-top-right,
     .flower-bottom-left,
-    .flower-bottom-right,
-    .flower-bottom-center {
+    .flower-bottom-right {
       position: absolute;
-      z-index: 4;
+      z-index: 3;
       pointer-events: none;
-      opacity: 0.7;
     }
 
     .flower-top-left {
       top: 0;
       left: 0;
-      width: 135px;
+      width: 118px;
     }
 
     .flower-top-right {
       top: 0;
       right: 0;
-      width: 135px;
+      width: 118px;
     }
 
     .flower-bottom-left {
       bottom: 0;
       left: 0;
-      width: 98px;
+      width: 118px;
     }
 
     .flower-bottom-right {
       bottom: 0;
       right: 0;
-      width: 98px;
+      width: 118px;
     }
 
-    .flower-bottom-center {
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 145px;
-    }
-
-    .glass-panel {
+    .content {
       position: relative;
-      z-index: 3;
-      width: calc(100% - 70px);
-      max-width: 320px;
-      margin: 46px auto 58px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .cover-content {
-      position: relative;
-      padding: 30px 16px 24px;
+      z-index: 2;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
       text-align: center;
+      color: white;
+      padding: 60px 16px 24px;
     }
 
-    .flower-frame {
+    .hero-text {
+      width: 100%;
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 24px;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.14);
+    }
+
+    .subtitle {
+      font-size: 10px;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      color: #f8f4ef;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .names {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      color: #fff;
+      line-height: 1.2;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.14);
+    }
+
+    .date {
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #fff;
+    }
+
+    .location {
+      font-size: 11px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.35;
+    }
+
+    .spacer-top {
+      flex: 1;
+    }
+
+    .couple-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: -40px;
+      margin-bottom: 18px;
+    }
+
+    /* Flower frame around couple image */
+    .photo-frame {
       position: relative;
-      width: 100%;
-      max-width: 280px;
-      margin: 0 auto 18px;
+      width: 260px;
+      height: 320px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .photo-box {
+      width: 210px;
+      height: 270px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 3px solid rgba(255, 255, 255, 0.75);
+      border-radius: 140px 140px 24px 24px;
       padding: 10px;
-      background: rgba(255, 255, 255, 0.14);
-      border: 2px solid rgba(174, 119, 0, 0.35);
-      border-radius: 28px;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      overflow: visible;
-    }
-
-    .flower-frame.round-top {
-      max-width: 255px;
-      border-radius: 160px 160px 26px 26px;
-    }
-
-    .photo-img {
-      width: 100%;
-      display: block;
-      object-fit: cover;
-      border-radius: 20px;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+      overflow: hidden;
       position: relative;
       z-index: 2;
     }
 
-    .flower-frame.round-top .photo-img {
-      border-radius: 145px 145px 20px 20px;
-    }
-
-    .photo-frame {
-      width: 100%;
-      max-width: 315px;
-      margin: 0 auto 14px;
-      padding: 8px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .quote {
-      font-size: 14px;
-      line-height: 1.9;
-      margin-bottom: 18px;
-      color: var(--gold);
-      font-weight: 400;
-      text-shadow: var(--text-shadow);
-    }
-
-    .quote .en {
-      display: block;
-      font-family: var(--en-font);
-      font-style: italic;
-      font-size: 13px;
-      margin-top: 4px;
-      opacity: 0.95;
-    }
-
-    .music-title,
-    .save-date-small,
-    .count-title,
-    .calendar-title {
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      color: var(--gold);
-      text-shadow: var(--text-shadow);
-      font-family: var(--en-font);
-    }
-
-    .music-line {
-      width: 110px;
-      height: 1px;
-      background: rgba(174, 119, 0, 0.3);
-      margin: 0 auto 12px;
-    }
-
-    .music-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .icon-btn {
-      background: transparent;
-      border: none;
-      color: var(--gold);
-      font-size: 24px;
-      cursor: pointer;
-      transition: 0.2s ease;
-      text-shadow: var(--text-shadow);
-    }
-
-    .icon-btn:hover {
-      opacity: 0.7;
-      transform: scale(1.05);
-    }
-
-    .play-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: none;
-      font-size: 18px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.25s ease;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      color: var(--gold);
-      text-shadow: var(--text-shadow);
-    }
-
-    .play-btn:hover {
-      transform: scale(1.08);
-    }
-
-    .olive-box {
-      color: var(--gold);
-      padding-top: 8px;
-      text-shadow: var(--text-shadow);
-    }
-
-    .olive-text {
-      font-size: 14px;
-      line-height: 1.9;
-      margin-bottom: 18px;
-      color: var(--gold);
-    }
-
-    .olive-text .en {
-      display: block;
-      font-family: var(--en-font);
-      font-size: 13px;
-      margin-top: 6px;
-      font-style: italic;
-    }
-
-    .script-names,
-    .script-title,
-    .main-title,
-    .dress-title,
-    .gift-title {
-      font-family: var(--en-font);
-      font-size: 34px;
-      font-weight: 600;
-      line-height: 1.25;
-      margin-bottom: 14px;
-      color: var(--gold);
-      text-shadow: var(--text-shadow);
-    }
-
-    .line-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 22px;
-      font-size: 13px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-family: var(--kh-font);
-    }
-
-    .line-row::before,
-    .line-row::after {
-      content: "";
-      width: 48px;
-      height: 1px;
-      background: var(--gold-soft);
-    }
-
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin-bottom: 22px;
-    }
-
-    .time-box {
-      min-width: 60px;
-    }
-
-    .time-number {
-      font-size: 34px;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 6px;
-      color: var(--gold);
-      font-family: var(--en-font);
-    }
-
-    .time-label {
-      font-size: 11px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .calendar-month {
-      font-size: 17px;
-      margin-bottom: 14px;
-      color: var(--gold);
-      font-weight: 700;
-    }
-
-    .calendar {
-      width: 100%;
-      max-width: 220px;
-      margin: 0 auto;
-      font-size: 14px;
-      color: var(--gold);
-    }
-
-    .weekdays,
-    .dates {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      justify-items: center;
-      align-items: center;
-      gap: 10px 6px;
-    }
-
-    .weekdays {
-      margin-bottom: 10px;
-      font-size: 11px;
-      opacity: 0.85;
-      font-weight: 700;
-    }
-
-    .dates div {
-      width: 28px;
-      height: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-    }
-
-    .highlight {
-      border: 2px solid var(--gold);
-      border-radius: 50%;
-      background: rgba(174, 119, 0, 0.15);
-      font-weight: bold;
-      color: var(--gold);
-    }
-
-    .details {
-      text-align: center;
-      color: var(--gold);
-      padding: 24px 16px 34px;
-    }
-
-    .section {
-      margin-bottom: 34px;
-    }
-
-    .icon-top {
-      font-size: 34px;
-      margin-bottom: 10px;
-      color: var(--gold);
-      text-shadow: var(--text-shadow);
-    }
-
-    .time-text {
-      font-size: 17px;
-      color: var(--gold);
-      margin-bottom: 8px;
-      text-shadow: var(--text-shadow);
-      font-weight: 700;
-    }
-
-    .place-title {
-      font-size: 17px;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-      color: var(--gold);
-    }
-
-    .place-sub {
-      font-size: 15px;
-      color: var(--gold);
-      margin-bottom: 14px;
-      line-height: 1.8;
-    }
-
-    .timeline {
-      position: relative;
-      max-width: 260px;
-      margin: 0 auto;
-      padding: 8px 0;
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 1px;
-      background: rgba(174, 119, 0, 0.3);
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      margin: 20px 0;
-      position: relative;
-    }
-
-    .timeline-left,
-    .timeline-right {
-      padding: 0 10px;
-    }
-
-    .timeline-left {
-      text-align: right;
-    }
-
-    .timeline-right {
-      text-align: left;
-    }
-
-    .timeline-icon {
-      font-size: 30px;
-      color: var(--gold);
-      line-height: 1;
-      text-shadow: var(--text-shadow);
-    }
-
-    .timeline-time {
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      line-height: 1.6;
-      margin-bottom: 3px;
-      color: var(--gold);
-    }
-
-    .timeline-label {
-      font-size: 12px;
-      line-height: 1.7;
-      letter-spacing: 0.2px;
-      color: var(--gold);
-    }
-
-    .photo-box {
-      width: 100%;
-      max-width: 280px;
-      margin: 0 auto 22px;
-      overflow: visible;
-      border-radius: 4px;
-    }
-
-    .dress-subtitle {
-      font-size: 21px;
-      font-family: var(--kh-font);
-      color: var(--gold);
-      margin-bottom: 10px;
-      font-weight: 700;
-    }
-
-    .dress-icon {
-      font-size: 52px;
-      margin-bottom: 10px;
-      color: var(--gold);
-      text-shadow: var(--text-shadow);
-    }
-
-    .dress-note {
-      font-size: 14px;
-      color: var(--gold);
-      line-height: 1.9;
-      max-width: 240px;
-      margin: 0 auto;
-    }
-
-    .gift-section {
-      margin-top: 24px;
-      text-align: center;
-    }
-
-    .gift-text {
-      font-size: 14px;
-      line-height: 1.9;
-      max-width: 240px;
-      margin: 0 auto 18px;
-      color: var(--gold);
-    }
-
-    .qr-box {
-      width: 210px;
-      height: 210px;
-      margin: 0 auto;
-      padding: 8px;
-      background: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 14px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-    }
-
-    .qr-box img {
+    .couple {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       display: block;
+      border-radius: 130px 130px 18px 18px;
     }
 
-    .dress-section {
-      text-align: center;
-      padding: 20px 0 10px;
-    }
-
-    .dress-gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px 14px;
-      max-width: 360px;
-      margin: 20px auto 0;
-      align-items: start;
-    }
-
-    .gallery-item:first-child {
-      grid-column: span 2;
-    }
-
-    .gallery-item {
-      width: 100%;
-      background: transparent;
-    }
-
-    .gallery-frame {
-      max-width: 100%;
-      margin: 0;
-      border-radius: 20px;
-    }
-
-    .gallery-frame .photo-img {
-      aspect-ratio: 1 / 1.15;
-      border-radius: 14px;
-    }
-
-    .gallery-item:first-child .gallery-frame .photo-img {
-      aspect-ratio: 2 / 1;
-    }
-
-    .extra-photos {
-      max-width: 360px;
-      margin: 20px auto 0;
-      display: grid;
-      gap: 18px;
-    }
-
-    .btn-back {
-      display: inline-block;
-      margin-top: 34px;
-      padding: 14px 30px;
-      border-radius: 40px;
-      text-decoration: none;
-      font-size: 16px;
-      letter-spacing: 0.5px;
-      background: transparent;
-      color: var(--gold);
-      border: 1px solid rgba(174, 119, 0, 0.75);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
-      transition: 0.3s ease;
-      font-weight: 700;
-    }
-
-    .btn-back:hover {
-      color: var(--gold);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-    }
-
-    #player {
+    .frame-flower {
       position: absolute;
-      width: 0;
-      height: 0;
-      overflow: hidden;
-      opacity: 0;
+      z-index: 3;
       pointer-events: none;
+      filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.18));
+    }
+
+    .frame-top-left {
+      top: -12px;
+      left: -12px;
+      width: 95px;
+      transform: rotate(-8deg);
+    }
+
+    .frame-top-right {
+      top: -12px;
+      right: -12px;
+      width: 95px;
+      transform: scaleX(-1) rotate(-8deg);
+    }
+
+    .frame-bottom-left {
+      bottom: -10px;
+      left: -10px;
+      width: 90px;
+      transform: rotate(8deg);
+    }
+
+    .frame-bottom-right {
+      bottom: -10px;
+      right: -10px;
+      width: 90px;
+      transform: scaleX(-1) rotate(8deg);
+    }
+
+    .btn {
+      display: inline-block;
+      background: #d89b00;
+      color: white;
+      padding: 14px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      transition: 0.3s ease;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+      margin-bottom: 10px;
+    }
+
+    .btn:hover {
+      background: #b67f00;
+      transform: translateY(-2px) scale(1.02);
     }
 
     @media (min-width: 431px) {
       body {
         display: flex;
         justify-content: center;
+        align-items: center;
+        background: #cfcfcf;
+        min-height: 100vh;
       }
 
-      .invitation {
+      .card {
         max-width: 430px;
-      }
-
-      .invitation::after {
-        left: 18px;
-        box-shadow: 389px 0 0 var(--light-line);
+        min-height: 100vh;
+        min-height: 100dvh;
       }
     }
 
-    @media (max-width: 380px) {
-      .script-names,
-      .script-title,
-      .main-title,
-      .dress-title,
-      .gift-title {
-        font-size: 28px;
+    @media (max-width: 480px) {
+      .content {
+        padding: 52px 14px 20px;
       }
 
-      .time-number {
-        font-size: 28px;
+      .title {
+        font-size: 25px;
+        margin-bottom: 22px;
       }
 
-      .time-box {
-        min-width: 50px;
+      .subtitle {
+        font-size: 10px;
+        letter-spacing: 1.8px;
       }
 
-      .flower-frame.round-top {
-        max-width: 220px;
-        padding: 8px;
+      .names {
+        font-size: 20px;
+      }
+
+      .date,
+      .location {
+        font-size: 10px;
+      }
+
+      .flower-top-left,
+      .flower-top-right,
+      .flower-bottom-left,
+      .flower-bottom-right {
+        width: 102px;
+      }
+
+      .couple-wrap {
+        margin-top: -30px;
+        margin-bottom: 16px;
+      }
+
+      .photo-frame {
+        width: 220px;
+        height: 280px;
+      }
+
+      .photo-box {
+        width: 180px;
+        height: 235px;
+      }
+
+      .frame-top-left,
+      .frame-top-right {
+        width: 82px;
+      }
+
+      .frame-bottom-left,
+      .frame-bottom-right {
+        width: 78px;
+      }
+
+      .btn {
+        font-size: 16px;
+        padding: 13px 28px;
+      }
+    }
+
+    @media (max-width: 375px) {
+      .content {
+        padding: 46px 12px 18px;
+      }
+
+      .title {
+        font-size: 23px;
+      }
+
+      .names {
+        font-size: 18px;
+      }
+
+      .couple-wrap {
+        margin-top: -60px;
+      }
+
+      .photo-frame {
+        width: 200px;
+        height: 255px;
+      }
+
+      .photo-box {
+        width: 165px;
+        height: 215px;
+      }
+
+      .frame-top-left,
+      .frame-top-right {
+        width: 74px;
+      }
+
+      .frame-bottom-left,
+      .frame-bottom-right {
+        width: 70px;
+      }
+
+      .btn {
+        font-size: 13px;
+        padding: 12px 24px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="invitation">
-    <div id="player"></div>
+  <div class="card">
+    <img src="flower_1.png" class="flower-top-left" alt="" />
+    <img src="flower_3.png" class="flower-top-right" alt="" />
+    <img src="flower_2.png" class="flower-bottom-left" alt="" />
+    <img src="flower_4.png" class="flower-bottom-right" alt="" />
 
-    <img src="flower_1.png" alt="" class="flower-top-left">
-    <img src="flower_3.png" alt="" class="flower-top-right">
-    <img src="flower_2.png" alt="" class="flower-bottom-left">
-    <img src="flower_4.png" alt="" class="flower-bottom-right">
-    <img src="flower_6.png" alt="" class="flower-bottom-center">
+    <div class="content">
+      <div class="hero-text">
+        <h1 class="title">Save the Date</h1>
+        <p class="subtitle">TO OUR CEREMONY</p>
 
-    <div class="glass-panel">
-      <div class="cover-content">
+        <div class="names">ANDREW &amp; JESSICA</div>
+
+        <div class="date">DECEMBER 15, 2027</div>
+        <div class="location">MIAMI BEACH, FLORIDA</div>
+      </div>
+
+      <div class="spacer-top"></div>
+
+      <div class="couple-wrap">
         <div class="photo-frame">
-          <div class="flower-frame round-top">
-            <img src="flower_1.png" alt="" class="flower-top-left">
-            <img src="flower_3.png" alt="" class="flower-top-right">
-            <img src="flower_2.png" alt="" class="flower-bottom-left">
-            <img src="flower_4.png" alt="" class="flower-bottom-right">
-            <img src="flower_6.png" alt="" class="flower-bottom-center">
-            <img src="profile_4.png" alt="M & F" class="photo-img">
-          </div>
-        </div>
+            <img src="flower_1.png" class="flower-top-left" alt="" />
+    <img src="flower_3.png" class="flower-top-right" alt="" />
+    <img src="flower_2.png" class="flower-bottom-left" alt="" />
+    <img src="flower_4.png" class="flower-bottom-right" alt="" />
 
-        <div class="quote">
-          ខ្ញុំបានរកឃើញមនុស្សម្នាក់ដែលព្រលឹងខ្ញុំស្រឡាញ់
-          <span class="en">“I found the one whom my soul loves.”</span>
-        </div>
-
-        <div class="music-title">our love soundtrack</div>
-        <div class="music-line"></div>
-
-        <div class="music-controls">
-          <button class="icon-btn" type="button" aria-label="មុន">⏮</button>
-          <button class="play-btn" type="button" id="playButton" aria-label="លេង/ផ្អាក">▶</button>
-          <button class="icon-btn" type="button" aria-label="បន្ទាប់">⏭</button>
-        </div>
-
-        <div class="olive-box">
-          <div class="olive-text">
-            សូមអញ្ជើញមកចូលរួមអបអរសាទរសេចក្តីស្រឡាញ់របស់ពួកយើង ក្នុងរាត្រីដ៏មានន័យនេះ។
-            <span class="en">Join us under the Khmer sky.</span>
-          </div>
-
-          <div class="save-date-small">save the date</div>
-          <div class="script-names">M & F</div>
-
-          <div class="line-row">
-            <span>ថ្ងៃសុក្រ</span>
-            <span>២០២៧</span>
-          </div>
-
-          <div class="count-title">counting down</div>
-
-          <div class="countdown" id="countdown">
-            <div class="time-box">
-              <div class="time-number" id="days">29</div>
-              <div class="time-label">ថ្ងៃ</div>
-            </div>
-            <div class="time-box">
-              <div class="time-number" id="hours">01</div>
-              <div class="time-label">ម៉ោង</div>
-            </div>
-            <div class="time-box">
-              <div class="time-number" id="minutes">53</div>
-              <div class="time-label">នាទី</div>
-            </div>
-            <div class="time-box">
-              <div class="time-number" id="seconds">24</div>
-              <div class="time-label">វិនាទី</div>
-            </div>
-          </div>
-
-          <div class="calendar-title">ថ្ងៃពិសេសរបស់ពួកយើង</div>
-          <div class="calendar-month">ខែធ្នូ ២០២៧</div>
-
-          <div class="calendar">
-            <div class="weekdays">
-              <div>ចន្ទ</div><div>អង្គារ</div><div>ពុធ</div><div>ព្រហ</div><div>សុក្រ</div><div>សៅរ៍</div><div>អាទិត្យ</div>
-            </div>
-            <div class="dates">
-              <div></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div>
-              <div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div>
-              <div>14</div><div class="highlight">15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div>
-              <div>21</div><div>22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div>
-              <div>28</div><div>29</div><div>30</div><div>31</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="details">
-        <section class="section">
-          <div class="icon-top">🥂</div>
-          <h2 class="script-title">ពិធីទទួលភ្ញៀវ</h2>
-          <div class="time-text">៥:៣០ ល្ងាច</div>
-          <div class="place-title">សាល វេនីនីយ៉ា</div>
-          <div class="place-sub">ក្រុងសៀមរាប</div>
-        </section>
-
-        <section class="section">
-          <h2 class="main-title">កម្មវិធីលម្អិត</h2>
-
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-icon">⛪</div>
-              </div>
-              <div class="timeline-right">
-                <div class="timeline-time">៤:៣០ ល្ងាច</div>
-                <div class="timeline-label">ពិធីនៅព្រះវិហារ</div>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-time">៥:៣០ ល្ងាច</div>
-                <div class="timeline-label">ស្រាក្រឡុកស្វាគមន៍</div>
-              </div>
-              <div class="timeline-right">
-                <div class="timeline-icon">🥂</div>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-icon">💃</div>
-              </div>
-              <div class="timeline-right">
-                <div class="timeline-time">៧:០០ យប់</div>
-                <div class="timeline-label">របាំដំបូង</div>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-time">៧:៣០ យប់</div>
-                <div class="timeline-label">អាហារពេលល្ងាច</div>
-              </div>
-              <div class="timeline-right">
-                <div class="timeline-icon">🍽️</div>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-icon">🎉</div>
-              </div>
-              <div class="timeline-right">
-                <div class="timeline-time">៨:៣០ យប់</div>
-                <div class="timeline-label">ពិធីជប់លៀង</div>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-time">៣:០០ រំលងអធ្រាត្រ</div>
-                <div class="timeline-label">បញ្ចប់កម្មវិធី</div>
-              </div>
-              <div class="timeline-right">
-                <div class="timeline-icon">🕘</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section">
           <div class="photo-box">
-            <div class="flower-frame">
-              <img src="flower_1.png" alt="" class="flower-top-left">
-              <img src="flower_3.png" alt="" class="flower-top-right">
-              <img src="flower_2.png" alt="" class="flower-bottom-left">
-              <img src="flower_4.png" alt="" class="flower-bottom-right">
-              <img src="flower_6.png" alt="" class="flower-bottom-center">
-              <img src="image5.png" alt="គូស្នេហ៍" class="photo-img">
-            </div>
+            <img src="profile_3.png" class="couple" alt="Couple" />
           </div>
-
-          <h2 class="dress-title">ការស្លៀកពាក់</h2>
-          <div class="dress-subtitle">ស្រស់ស្អាត និងឆើតឆាយ</div>
-          <div class="dress-icon">🤵🖤</div>
-          <div class="dress-note">
-            សូមមេត្តាចៀសវាងសម្លៀកបំពាក់ពណ៌ស ឬពណ៌ស្រាលជិតស
-            <br>
-            (Kindly avoid white and off-white attire)
-          </div>
-        </section>
-
-        <section class="gift-section">
-          <div class="icon-top">🎁</div>
-          <h2 class="gift-title">អំណោយ</h2>
-          <div class="gift-text">
-            វត្តមានរបស់អ្នកគឺជាអំណោយដ៏មានតម្លៃបំផុតសម្រាប់ពួកយើង។
-            ប្រសិនបើអ្នកមានបំណងផ្តល់អំណោយបន្ថែម អំណោយជាសាច់ប្រាក់ក៏ស្វាគមន៍ផងដែរ។
-          </div>
-
-          <div class="qr-box">
-            <img src="QR.png" alt="QR កូដ">
-          </div>
-        </section>
-
-        <section class="dress-section">
-          <h2 class="dress-title">ឧទាហរណ៍សម្លៀកបំពាក់</h2>
-
-          <div class="dress-gallery">
-            <div class="gallery-item">
-              <div class="flower-frame gallery-frame">
-                <img src="flower_1.png" alt="" class="flower-top-left">
-                <img src="flower_3.png" alt="" class="flower-top-right">
-                <img src="flower_2.png" alt="" class="flower-bottom-left">
-                <img src="flower_4.png" alt="" class="flower-bottom-right">
-                <img src="flower_6.png" alt="" class="flower-bottom-center">
-                <img src="image6.png" alt="រចនាប័ទ្ម ១" class="photo-img">
-              </div>
-            </div>
-
-            <div class="gallery-item">
-              <div class="flower-frame gallery-frame">
-                <img src="image1.png" alt="រចនាប័ទ្ម ២" class="photo-img">
-              </div>
-            </div>
-
-            <div class="gallery-item">
-              <div class="flower-frame gallery-frame">
-                <img src="image2.png" alt="រចនាប័ទ្ម ៣" class="photo-img">
-              </div>
-            </div>
-
-            <div class="gallery-item">
-              <div class="flower-frame gallery-frame">
-                <img src="image3.png" alt="រចនាប័ទ្ម ៤" class="photo-img">
-              </div>
-            </div>
-
-            <div class="gallery-item">
-              <div class="flower-frame gallery-frame">
-                <img src="image4.png" alt="រចនាប័ទ្ម ៥" class="photo-img">
-              </div>
-            </div>
-          </div>
-
-          <div class="extra-photos">
-            <div class="flower-frame gallery-frame">
-              <img src="flower_1.png" alt="" class="flower-top-left">
-              <img src="flower_3.png" alt="" class="flower-top-right">
-              <img src="flower_2.png" alt="" class="flower-bottom-left">
-              <img src="flower_4.png" alt="" class="flower-bottom-right">
-              <img src="flower_6.png" alt="" class="flower-bottom-center">
-              <img src="image1.png" alt="រចនាប័ទ្ម បន្ថែម ១" class="photo-img">
-            </div>
-
-            <div class="flower-frame gallery-frame">
-              <img src="flower_1.png" alt="" class="flower-top-left">
-              <img src="flower_3.png" alt="" class="flower-top-right">
-              <img src="flower_2.png" alt="" class="flower-bottom-left">
-              <img src="flower_4.png" alt="" class="flower-bottom-right">
-              <img src="flower_6.png" alt="" class="flower-bottom-center">
-              <img src="image5.png" alt="រចនាប័ទ្ម បន្ថែម ២" class="photo-img">
-            </div>
-          </div>
-
-          <a href="index_1.html" class="btn-back">⬅ ត្រឡប់ក្រោយ</a>
-        </section>
+        </div>
       </div>
+
+      <a href="details.html" class="btn">View Wedding Details</a>
     </div>
   </div>
-
-  <script src="https://www.youtube.com/iframe_api"></script>
-  <script>
-    let player = null;
-    let isPlayerReady = false;
-
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        height: '0',
-        width: '0',
-        videoId: 'Mn_qLC7_ueA',
-        playerVars: {
-          autoplay: 0,
-          controls: 0,
-          rel: 0,
-          loop: 1,
-          playlist: 'Mn_qLC7_ueA'
-        },
-        events: {
-          onReady: function () {
-            isPlayerReady = true;
-          },
-          onStateChange: function (event) {
-            const playBtn = document.getElementById('playButton');
-            if (playBtn) {
-              playBtn.textContent =
-                event.data === YT.PlayerState.PLAYING ? '❚❚' : '▶';
-            }
-          }
-        }
-      });
-    }
-
-    function toggleMusic() {
-      const playBtn = document.getElementById('playButton');
-      if (!isPlayerReady || !player) {
-        if (playBtn) playBtn.textContent = '▶';
-        return;
-      }
-
-      const state = player.getPlayerState();
-      if (state === YT.PlayerState.PLAYING) {
-        player.pauseVideo();
-      } else {
-        player.playVideo();
-      }
-    }
-
-    document.getElementById('playButton')?.addEventListener('click', toggleMusic);
-
-    document.addEventListener("DOMContentLoaded", function () {
-      const targetDate = new Date("2027-12-15T00:00:00").getTime();
-
-      function pad(num) {
-        return String(num).padStart(2, "0");
-      }
-
-      function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-
-        if (distance < 0) {
-          document.getElementById("countdown").innerHTML = "ថ្ងៃពិសេសបានមកដល់ហើយ 💛";
-          return;
-        }
-
-        document.getElementById("days").innerText =
-          Math.floor(distance / (1000 * 60 * 60 * 24));
-
-        document.getElementById("hours").innerText =
-          pad(Math.floor((distance / (1000 * 60 * 60)) % 24));
-
-        document.getElementById("minutes").innerText =
-          pad(Math.floor((distance / (1000 * 60)) % 60));
-
-        document.getElementById("seconds").innerText =
-          pad(Math.floor((distance / 1000) % 60));
-      }
-
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
-    });
-  </script>
 </body>
 </html>
