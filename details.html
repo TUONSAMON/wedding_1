@@ -953,86 +953,154 @@
   </div>
 
   <script src="https://www.youtube.com/iframe_api"></script>
-  <script>
-    let player = null;
-    let isPlayerReady = false;
+<script>
+  let player = null;
+  let isPlayerReady = false;
+  let userInteracted = false;
 
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        height: '0',
-        width: '0',
-        videoId: 'Mn_qLC7_ueA',
-        playerVars: {
-          autoplay: 0,
-          controls: 0,
-          rel: 0,
-          loop: 1,
-          playlist: 'Mn_qLC7_ueA'
+  function updatePlayButton(isPlaying) {
+    const playBtn = document.getElementById("playButton");
+    if (playBtn) {
+      playBtn.textContent = isPlaying ? "❚❚" : "▶";
+    }
+  }
+
+  function safePlayVideo(withSound = false) {
+    if (!player || !isPlayerReady) return;
+
+    try {
+      if (withSound) {
+        player.unMute();
+        player.setVolume(100);
+      } else {
+        player.mute();
+      }
+
+      const result = player.playVideo();
+
+      if (result && typeof result.then === "function") {
+        result.catch(() => {
+          updatePlayButton(false);
+        });
+      }
+    } catch (error) {
+      updatePlayButton(false);
+      console.log("Play blocked:", error);
+    }
+  }
+
+  function unlockAudioAndPlay() {
+    if (!player || !isPlayerReady || userInteracted) return;
+
+    userInteracted = true;
+
+    try {
+      player.unMute();
+      player.setVolume(100);
+      player.playVideo();
+    } catch (error) {
+      console.log("Unlock audio failed:", error);
+    }
+  }
+
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player("player", {
+      height: "0",
+      width: "0",
+      videoId: "Mn_qLC7_ueA",
+      playerVars: {
+        autoplay: 1,
+        controls: 0,
+        rel: 0,
+        loop: 1,
+        playlist: "Mn_qLC7_ueA",
+        playsinline: 1,
+        modestbranding: 1,
+        mute: 1
+      },
+      events: {
+        onReady: function () {
+          isPlayerReady = true;
+
+          // Try autoplay muted first (works better on mobile)
+          safePlayVideo(false);
         },
-        events: {
-          onReady: function () {
-            isPlayerReady = true;
-          },
-          onStateChange: function (event) {
-            const playBtn = document.getElementById('playButton');
-            if (playBtn) {
-              playBtn.textContent =
-                event.data === YT.PlayerState.PLAYING ? '❚❚' : '▶';
-            }
+        onStateChange: function (event) {
+          if (event.data === YT.PlayerState.PLAYING) {
+            updatePlayButton(true);
+          } else if (
+            event.data === YT.PlayerState.PAUSED ||
+            event.data === YT.PlayerState.ENDED
+          ) {
+            updatePlayButton(false);
           }
         }
-      });
+      }
+    });
+  }
+
+  function toggleMusic() {
+    if (!player || !isPlayerReady) return;
+
+    const state = player.getPlayerState();
+
+    if (
+      state === YT.PlayerState.UNSTARTED ||
+      state === YT.PlayerState.CUED ||
+      state === YT.PlayerState.PAUSED ||
+      state === YT.PlayerState.ENDED
+    ) {
+      userInteracted = true;
+      player.unMute();
+      player.setVolume(100);
+      player.playVideo();
+    } else if (state === YT.PlayerState.PLAYING) {
+      player.pauseVideo();
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const playBtn = document.getElementById("playButton");
+    if (playBtn) {
+      playBtn.addEventListener("click", toggleMusic);
     }
 
-    function toggleMusic() {
-      const playBtn = document.getElementById('playButton');
-      if (!isPlayerReady || !player) {
-        if (playBtn) playBtn.textContent = '▶';
+    // First touch/click anywhere on page unlocks sound on iOS/Android
+    document.addEventListener("touchstart", unlockAudioAndPlay, { once: true });
+    document.addEventListener("click", unlockAudioAndPlay, { once: true });
+
+    const targetDate = new Date("2027-12-15T00:00:00").getTime();
+
+    function pad(num) {
+      return String(num).padStart(2, "0");
+    }
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        document.getElementById("countdown").innerHTML =
+          "ថ្ងៃពិសេសបានមកដល់ហើយ 💛";
         return;
       }
 
-      const state = player.getPlayerState();
-      if (state === YT.PlayerState.PLAYING) {
-        player.pauseVideo();
-      } else {
-        player.playVideo();
-      }
+      document.getElementById("days").innerText =
+        Math.floor(distance / (1000 * 60 * 60 * 24));
+
+      document.getElementById("hours").innerText =
+        pad(Math.floor((distance / (1000 * 60 * 60)) % 24));
+
+      document.getElementById("minutes").innerText =
+        pad(Math.floor((distance / (1000 * 60)) % 60));
+
+      document.getElementById("seconds").innerText =
+        pad(Math.floor((distance / 1000) % 60));
     }
 
-    document.getElementById('playButton')?.addEventListener('click', toggleMusic);
-
-    document.addEventListener("DOMContentLoaded", function () {
-      const targetDate = new Date("2027-12-15T00:00:00").getTime();
-
-      function pad(num) {
-        return String(num).padStart(2, "0");
-      }
-
-      function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-
-        if (distance < 0) {
-          document.getElementById("countdown").innerHTML = "ថ្ងៃពិសេសបានមកដល់ហើយ 💛";
-          return;
-        }
-
-        document.getElementById("days").innerText =
-          Math.floor(distance / (1000 * 60 * 60 * 24));
-
-        document.getElementById("hours").innerText =
-          pad(Math.floor((distance / (1000 * 60 * 60)) % 24));
-
-        document.getElementById("minutes").innerText =
-          pad(Math.floor((distance / (1000 * 60)) % 60));
-
-        document.getElementById("seconds").innerText =
-          pad(Math.floor((distance / 1000) % 60));
-      }
-
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
-    });
-  </script>
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  });
+</script>
 </body>
 </html>
